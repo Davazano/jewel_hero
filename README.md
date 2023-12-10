@@ -1,0 +1,1 @@
+This game (Jewel Hero) is based on Jacob Seidelin's Jewel Warrior (a variant of Bejeweled).
