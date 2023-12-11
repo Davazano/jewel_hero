@@ -4,7 +4,7 @@ var jewel = {};
 // wait until main document is loaded
 window.addEventListener("load", function() {
     // start dynamic loading
-    Modernizer.load([
+    Modernizr.load([
         {
             // these files are always loaded
             load : [
