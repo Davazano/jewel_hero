@@ -14,7 +14,8 @@ window.addEventListener("load", function() {
             ],
             // called when all files have finished loading and executing
             complete : function() {
-                // console.log("All files loaded!");
+                // show the first screen
+                jewel.game.showScreen("splash-screen");
             }
         }
     ]);
