@@ -28,12 +28,12 @@ body {
 
 #splash-screen {
     text-align: center;
-    padding-top: 100px;
+    padding-top: 2.5em;
 }
 
 #splash-screen .continue {
     cursor: pointer;
-    font-size: 30px;
+    font-size: 0.75em;
 }
 
 .logo {
