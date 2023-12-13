@@ -6,8 +6,9 @@ body {
     position: absolute;
     left: 0;
     top: 0;
-    width: 320px;
-    height: 480px;
+    font-size: 40px;
+    width: 8em; /* 320px; */
+    height: 12em; /* 480px; */
     background-color: rgb(30,30,30);
     font-family: Geo;
     color: rgb(200,200,100);
