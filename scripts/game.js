@@ -11,6 +11,11 @@ jewel.game = (function() {
             dom.removeClass(screen, "active");
         }
         dom.addClass(screen, "active");
+
+        // run the screen module
+        jewel.screens[screenId].run();
+        // display the screen html
+        dom.addClass(screen, "active");
     }
 
     //expose public methods
