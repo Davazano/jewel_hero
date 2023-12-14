@@ -12,7 +12,9 @@ window.addEventListener("load", function() {
             load : [
                 "scripts/sizzle.js",
                 "scripts/dom.js",
-                "scripts/game.js"
+                "scripts/game.js",
+                "scripts/screen.splash.js",
+                "scripts/screen.main-menu.js"
             ],
             // called when all files have finished loading and executing
             complete : function() {
