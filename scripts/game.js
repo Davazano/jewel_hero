@@ -28,6 +28,7 @@ jewel.game = (function() {
 
     //expose public methods
     return {
-        showScreen : showScreen
+        showScreen : showScreen,
+        setup : setup
     };
 })();
