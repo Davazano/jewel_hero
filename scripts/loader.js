@@ -26,6 +26,7 @@ window.addEventListener("load", function() {
             nope : "scripts/screen.install.js",
             // called when all files have finished loading and executing
             complete : function() {
+                jewel.game.setup();
                 if (Modernizr.standalone) {
                     // show the first screen
                     jewel.game.showScreen("splash-screen");
