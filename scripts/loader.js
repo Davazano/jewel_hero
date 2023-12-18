@@ -41,7 +41,10 @@ window.addEventListener("load", function() {
     if (Modernizr.standalone) {
         Modernizr.load([
             {
-                load : ["scripts/screen.main-menu.js"]
+                load : [
+                    "scripts/screen.main-menu.js",
+                    "scripts/board.js"
+                ]
             }
         ]);
     }
