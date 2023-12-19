@@ -111,6 +111,14 @@ jewel.board = (function() {
         return chain;
     }
 
+    // returns true if (x1, y1) is adjacent to (x2, y2)
+    function isAdjacent(x1, y1, x2, y2) {
+        var dx = Math.abs(x1 - x2),
+            dy = Math.abs(y1 - y2);
+        // the sum of the two position is 1 if they are adjacent. This is also called Manhattan distance
+        return (dx + dy === 1);
+    }
+
     return {
         canSwap : canSwap,
         initialize : initialize,
