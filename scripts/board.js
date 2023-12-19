@@ -32,6 +32,14 @@ jewel.board = (function() {
         return Math.floor(Math.random() * numJewelTypes);
     }
 
+    function getJewel(x, y) {
+        if (x < 0 || x > cols-1 || y < 0 || y >rows-1) {
+            return -1;
+        } else {
+            return jewels[x][y];
+        }
+    }
+
     function fillBoard() {
         var x, y;
         jewels = [];
