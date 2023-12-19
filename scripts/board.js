@@ -27,6 +27,17 @@ jewel.board = (function() {
         console.log(str);
     }
 
+    function fillBoard() {
+        var x, y;
+        jewels = [];
+        for (x = 0; x < cols; x++) {
+            jewels[x] = [];
+            for (y = 0; y < rows; y++) {
+                jewels[x][y] = randomJewel();
+            }
+        }
+    }
+
     return {
         initialize : initialize,
         print : print
