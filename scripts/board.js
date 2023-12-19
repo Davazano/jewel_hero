@@ -57,6 +57,36 @@ jewel.board = (function() {
         }
     }
 
+    // returns the number jewels in the longest chain
+    // that includes (x,y)
+    function checkChain(x, y) {
+        var type = getJewel(x, y),
+            left = 0, right = 0,
+            down = 0, up = 0;
+
+        // look right
+        while (type === getJewel(x + right + 1, y)) {
+            right++;
+        }
+
+        // look left
+        while (type === getJewel(x - left - 1, y)) {
+            left++;
+        }
+
+        // left up
+        while (type === getJewel(x, y + up + 1)) {
+            up++;
+        }
+
+        // look down
+        while (type === getJewel(x, y - down - 1)) {
+            down++;
+        }
+
+        return Math.max(left + 1 + right, up + 1 + down);
+    }
+
     return {
         initialize : initialize,
         print : print
