@@ -39,6 +39,12 @@ jewel.board = (function() {
             jewels[x] = [];
             for (y = 0; y < rows; y++) {
                 jewels[x][y] = randomJewel();
+                /* Removing the initial chains */
+                while ((type === getJewel(x-1, y) && type === getJewel(x-2, y)) ||
+                       (type === getJewel(x, y -1) && type === getJewel(x, y-2))) {
+                    type = randomJewel();
+                }
+                jewels[x][y] = type;
             }
         }
     }
