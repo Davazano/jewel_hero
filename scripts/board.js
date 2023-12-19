@@ -6,13 +6,14 @@ jewel.board = (function() {
         baseScore,
         numJewelTypes;
 
-    function initialize() {
+    function initialize(callback) {
         settings = jewel.settings;
         numJewelTypes = settings.numJewelTypes;
         baseScore = settings.baseScore;
         cols = settings.cols;
         rows = settings.rows;
         fillBoard();
+        callback();
     }
 
     function print() {
