@@ -27,6 +27,11 @@ jewel.board = (function() {
         console.log(str);
     }
 
+    // return integer between 0 and (numJewelTypes - 1)
+    function randomJewel() {
+        return Math.floor(Math.random() * numJewelTypes);
+    }
+
     function fillBoard() {
         var x, y;
         jewels = [];
