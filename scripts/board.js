@@ -87,7 +87,32 @@ jewel.board = (function() {
         return Math.max(left + 1 + right, up + 1 + down);
     }
 
+    // returns true if [x1, y1] can be swapped with (x2, y2)
+    // to form a new match
+    function canSwap(x1, y1, x2, y2) {
+        var type1 = getJewel(x1, y1),
+            type2 = getJewel(x2, y2),
+            chain;
+        
+        if (!isAdjacent(x1, y1, x2, y2)) {
+            return false;
+        }
+
+        // temporarily swap jewels
+        jewels[x1][y1] = type2;
+        jewels[x2][y2] = type1;
+
+        chain = (checkChain(x2, y2) > 2 || checkChain(x1, y1) > 2);
+
+        // swap back
+        jewels[x1][y1] = type1;
+        jewels[x2][y2] = type2;
+
+        return chain;
+    }
+
     return {
+        canSwap : canSwap,
         initialize : initialize,
         print : print
     }
