@@ -38,7 +38,7 @@ jewel.board = (function() {
         for (x = 0; x < cols; x++) {
             jewels[x] = [];
             for (y = 0; y < rows; y++) {
-                jewels[x][y] = randomJewel();
+                type = randomJewel();
                 /* Removing the initial chains */
                 while ((type === getJewel(x-1, y) && type === getJewel(x-2, y)) ||
                        (type === getJewel(x, y -1) && type === getJewel(x, y-2))) {
