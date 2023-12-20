@@ -158,6 +158,16 @@ jewel.board = (function() {
                     jewels[x][y + gaps[x]] = getJewel(x, y);
                 }
             }
+
+            // fill from top
+            for (y = 0; y < gaps[x]; y++) {
+                jewels[x][y] = randomJewel();
+                moved.push({
+                    toX : x, toY : y,
+                    fromX : x, fromY : y - gaps[x],
+                    type : jewels[x][y]
+                });
+            }
         }
     }
 
