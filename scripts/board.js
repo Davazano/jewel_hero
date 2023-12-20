@@ -119,6 +119,21 @@ jewel.board = (function() {
         return (dx + dy === 1);
     }
 
+    // return a two-dimensional map of chain-lengths
+    function getChains() {
+        var x, y,
+            chains = [];
+
+        for (x = 0; x < cols; x++) {
+            chain[x] = [];
+            for (y = 0; y < rows; y++) {
+                chains[x][y] = checkChain(x, y);
+            }
+        }
+
+        return chains;
+    }
+
     return {
         canSwap : canSwap,
         initialize : initialize,
