@@ -125,7 +125,7 @@ jewel.board = (function() {
             chains = [];
 
         for (x = 0; x < cols; x++) {
-            chain[x] = [];
+            chains[x] = [];
             for (y = 0; y < rows; y++) {
                 chains[x][y] = checkChain(x, y);
             }
