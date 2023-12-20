@@ -149,6 +149,10 @@ jewel.board = (function() {
                         x : x, y : y,
                         type : getJewel(x, y)
                     });
+
+                    // add points to score
+                    score += baseScore * Math.pow(2, (chains[x][y] - 3));
+                    
                 } else if (gaps[x] > 0) {
                     moved.push({
                         toX : x, toY : y + gaps[x],
