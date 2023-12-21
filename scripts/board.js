@@ -55,6 +55,11 @@ jewel.board = (function() {
                 jewels[x][y] = type;
             }
         }
+
+        // recursive fill if new board has no moves
+        if (!hasMoves()) {
+            fillBoard();
+        }
     }
 
     // returns the number jewels in the longest chain
