@@ -237,10 +237,31 @@ jewel.board = (function() {
         return copy;
     }
 
+    // if possible, swaps (x1, y1) and (x2, y2) and calls the callback function with list of board events
+    function swap(x1, y1, x2, y2, callback) {
+        var tmp,
+            events;
+
+        if (canSwap(x1, y1, x2, y2)) {
+            // swap the jewels
+            tmp = getJewel(x1, y1);
+            jewels[x1][y1] = getJewel(x2, y2);
+            jewels[x2][y2] = tmp;
+
+            // check the board and get list of events
+            events = check();
+
+            callback(events);
+        } else {
+            callback(false);
+        }
+    }
+
     return {
         canSwap : canSwap,
         initialize : initialize,
         getBoard : getBoard,
-        print : print
+        print : print,
+        swap : swap
     }
 })();
