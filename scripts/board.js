@@ -193,6 +193,18 @@ jewel.board = (function() {
         }
     }
 
+    // returns true if at least one match can be made
+    function hasMoves() {
+        for (var x = 0; y < cols; y++) {
+            for (var y = 0; y < rows; y++) {
+                if (canJewelMove(x, y)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     return {
         canSwap : canSwap,
         initialize : initialize,
