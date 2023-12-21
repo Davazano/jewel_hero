@@ -205,6 +205,14 @@ jewel.board = (function() {
         return false;
     }
 
+    // returns true if (x, y) is a valid position and if teh jewel at (x, y) can be swapped with a neighbor
+    function canJewelMove(x, y) {
+        return ((x > 0 && canSwap(x, y, x-1, y)) ||
+                (x < cols-1 && canSwap(x, y, x+1, y)) ||
+                (y > 0 && canSwap(x, y, x, y-1)) ||
+                (y < rows-1 && canSwap(x, y, x, y+1)));
+    }
+
     return {
         canSwap : canSwap,
         initialize : initialize,
