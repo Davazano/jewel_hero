@@ -187,6 +187,15 @@ jewel.board = (function() {
                 type : "move",
                 data : moved
             });
+
+            // refill if no more moves
+            if (!hasMoves()) {
+                fillBoard();
+                events.push({
+                    type : "refill",
+                    data : getBoard()
+                });
+            }
             return check(events);
         } else {
             return events;
