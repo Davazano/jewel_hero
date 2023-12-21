@@ -222,9 +222,20 @@ jewel.board = (function() {
                 (y < rows-1 && canSwap(x, y, x, y+1)));
     }
 
+    // create a copy the jewel board
+    function getBoard() {
+        var copy = [],
+            x;
+        for (x = 0; x < cols; x++) {
+            copy[x] = jewels[x].slice(0);
+        }
+        return copy;
+    }
+
     return {
         canSwap : canSwap,
         initialize : initialize,
+        getBoard : getBoard,
         print : print
     }
 })();
