@@ -81,5 +81,10 @@ jewel.board = (function() {
         console.log(str);
     }
 
-    
+    return {
+        initialize : initialize,
+        swap : swap,
+        getBoard : getBoard,
+        print : print
+    };
 })();
