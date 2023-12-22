@@ -16,6 +16,12 @@ window.addEventListener("load", function() {
         return (window.navigator.standalone != false);
     });
 
+    // extend yepnope with preloading
+    yepnope.addPrefix("preload", function(resource) {
+        resource.noexec = true;
+        return resource;
+    });
+
     // start dynamic loading
     // loading stage 1
     Modernizr.load([
