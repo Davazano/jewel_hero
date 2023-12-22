@@ -5,6 +5,19 @@ jewel.board = (function() {
         worker,
         messageCount,
         callbacks;
+
+        function messageHandler(event) {
+            // uncomment to log worker messages
+            // console.log(event.data);
+
+            var message = event.data;
+            jewels = message.jewels;
+
+            if (callbacks[message.id]) {
+                callbacks[message.id](message.data);
+                delete callbacks[message.id];
+            }
+        }
     
         function initialize(callback) {
             settings = jewel.settings;
@@ -14,6 +27,9 @@ jewel.board = (function() {
             messageCount = 0;
             callbacks = [];
             worker = new Worker("scripts/board.worker.js");
+
+            dom.bind(worker, "message", messageHandler);
+            post("initialize", settings, callback);
         }
 
         function post(command, data, callback) {
