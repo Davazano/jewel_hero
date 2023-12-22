@@ -48,9 +48,12 @@ window.addEventListener("load", function() {
         Modernizr.load([
             {
                 load : [
-                    "scripts/screen.main-menu.js",
-                    "scripts/board.js"
+                    "scripts/screen.main-menu.js"
                 ]
+            }, {
+                test : Modernizr.webworkers,
+                yep : "scripts/board.worker-interface.js",
+                nope : "scripts/board.js"
             }
         ]);
     }
