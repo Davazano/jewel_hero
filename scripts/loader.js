@@ -58,7 +58,10 @@ window.addEventListener("load", function() {
                 ]
             }, {
                 test : Modernizr.webworkers,
-                yep : "scripts/board.worker-interface.js",
+                yep : [
+                    "scripts/board.worker-interface.js",
+                    "preload!scripts/board.worker.js"
+                ],
                 nope : "scripts/board.js"
             }
         ]);
