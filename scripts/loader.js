@@ -78,7 +78,7 @@ window.addEventListener("load", function() {
                 jewel.game.setup();
                 if (Modernizr.standalone) {
                     // show the first screen
-                    jewel.game.showScreen("splash-screen");
+                    jewel.game.showScreen("splash-screen", getLoadProgress);
                 } else {
                     jewel.game.showScreen("install-screen");
                 }
