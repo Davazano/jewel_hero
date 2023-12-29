@@ -6,7 +6,27 @@ jewel.display = (function() {
         jewelSize,
         firstRun = true;
 
+        function createBackground() {
+            var background = document.createElement("canvas"),
+                bgctx = background.getContext("2d");
     
+            dom.addClass(background, "background");
+            background.width = cols * jewelSize;
+            background.height = rows * jewelSize;
+    
+            bgctx.fillStyle = "rgba(225,235,255,0.15)";
+            for (var x=0;x<cols;x++) {
+                for (var y=0;y<cols;y++) {
+                    if ((x+y) % 2) {
+                        bgctx.fillRect(
+                            x * jewelSize, y * jewelSize,
+                            jewelSize, jewelSize
+                        );
+                    }
+                }
+            }
+            return background;
+        }
 
     function setup() {
         var boardElement = $("#game-screen .game-board")[0];
