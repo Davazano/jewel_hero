@@ -6,7 +6,8 @@ var jewel = {
         cols : 8,
         baseScore : 100,
         numJewelTypes : 7
-    }
+    },
+    images : {}
 };
 
 // wait until main document is loaded
