@@ -51,6 +51,14 @@ window.addEventListener("load", function() {
         return resource;
     });
 
+    function getLoadProgress() {
+        if (numPreload > 0) {
+            return numLoaded / numPreload;
+        } else {
+            return 0;
+        }
+    }
+
     // start dynamic loading
     // loading stage 1
     Modernizr.load([
