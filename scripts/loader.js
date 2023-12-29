@@ -92,6 +92,13 @@ window.addEventListener("load", function() {
                     "preload!scripts/board.worker.js"
                 ],
                 nope : "scripts/board.js"
+            }, {
+                load : [
+                    "loader!scripts/screen.main-menu.js",
+                    "loader!scripts/screen.game.js",
+                    "loader!images/jewels"
+                        + jewel.settings.jewelSize + ".png"
+                ]
             }
         ]);
     }
