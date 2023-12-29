@@ -29,6 +29,28 @@ window.addEventListener("load", function() {
         return resource;
     });
 
+    var numPreload = 0,
+    numLoaded = 0;
+
+    yepnope.addPrefix("loader", function(resource) {
+        // console.log("Loading: " + resource.url)
+        
+        var isImage = /.+\.(jpg|png|gif)$/i.test(resource.url);
+        resource.noexec = isImage;
+
+        numPreload++;
+        resource.autoCallback = function(e) {
+            // console.log("Finished loading: " + resource.url)
+            numLoaded++;
+            if (isImage) {
+                var image = new Image();
+                image.src = resource.url;
+                jewel.images[resource.url] = image;
+            }
+        };
+        return resource;
+    });
+
     // start dynamic loading
     // loading stage 1
     Modernizr.load([
