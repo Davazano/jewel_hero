@@ -90,17 +90,17 @@ window.addEventListener("load", function() {
     if (Modernizr.standalone) {
         Modernizr.load([
             {
-                load : [
-                    "scripts/screen.main-menu.js"
-                ]
-            }, {
+                test : Modernizr.canvas,
+                yep : "loader!scripts/display.canvas.js",
+                nope : "loader!scripts/display.dom.js"
+            },{
                 test : Modernizr.webworkers,
                 yep : [
-                    "scripts/board.worker-interface.js",
+                    "loader!scripts/board.worker-interface.js",
                     "preload!scripts/board.worker.js"
                 ],
-                nope : "scripts/board.js"
-            }, {
+                nope : "loader!scripts/board.js"
+            },{
                 load : [
                     "loader!scripts/screen.main-menu.js",
                     "loader!scripts/screen.game.js",
