@@ -115,3 +115,19 @@ ul.menu li button:active {
     display: inline-block;
     padding: 0 0.5em;
 }
+
+/* Progress bar */
+.progress {
+    margin : 0 auto;
+    width : 6em;
+    height : 0.5em;
+    border-radius : 0.5em;
+    overflow : hidden;
+    border : 1px solid rgb(200,200,100);
+}
+
+.progress .indicator {
+    background-color : rgb(200,200,100);
+    height : 100%;
+    width : 0%;
+}
