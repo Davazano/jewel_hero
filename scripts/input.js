@@ -49,6 +49,17 @@ jewel.input = (function() {
         inputHandlers[action].push(handler);
     }
 
+    function trigger(action) {
+        var handlers = inputHandlers[action],
+            args = Array.prototype.slice.call(arguments, 1);
+
+        if (handlers) {
+            for (var i=0;i<handlers.length;i++) {
+                handlers[i].apply(null, args);
+            }
+        }
+    }
+
     return {
         initialize : initialize,
         bind : bind
