@@ -67,6 +67,7 @@ jewel.display = (function() {
             }
         }
         callback();
+        renderCursor();
     }
 
     function clearJewel(x, y) {
@@ -74,7 +75,7 @@ jewel.display = (function() {
             x * jewelSize, y * jewelSize, jewelSize, jewelSize
         );
     }
-    
+
     function clearCursor() {
         if (cursor) {
             var x = cursor.x,
@@ -82,6 +83,32 @@ jewel.display = (function() {
             clearJewel(x, y);
             drawJewel(jewels[x][y], x, y);
         }
+    }
+
+    function renderCursor() {
+        if (!cursor) {
+            return;
+        }
+        var x = cursor.x,
+            y = cursor.y;
+
+        clearCursor();
+
+        if (cursor.selected) {
+            ctx.save();
+            ctx.globalCompositeOperation = "lighter";
+            ctx.globalAlpha = 0.8;
+            drawJewel(jewels[x][y], x, y);
+            ctx.restore();
+        }
+        ctx.save();
+        ctx.lineWidth = 0.05 * jewelSize;
+        ctx.strokeStyle = "rgba(250,250,150,0.8)";
+        ctx.strokeRect(
+            (x + 0.05) * jewelSize, (y + 0.05) * jewelSize,
+            0.9 * jewelSize, 0.9 * jewelSize
+        );
+        ctx.restore();
     }
 
     function setCursor(x, y, selected) {
