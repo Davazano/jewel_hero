@@ -79,6 +79,21 @@ jewel.screens["game-screen"] = (function() {
         }
     }
 
+    function moveCursor(x, y) {
+        if (cursor.selected) {
+            x += cursor.x;
+            y += cursor.y;
+            if (x >= 0 && x < settings.cols 
+                && y >= 0 && y < settings.rows) {
+                selectJewel(x, y);
+            }
+        } else {
+            x = (cursor.x + x + settings.cols) % settings.cols;
+            y = (cursor.y + y + settings.rows) % settings.rows;
+            setCursor(x, y, false);
+        }
+    }
+
     return {
         run : run
     };
