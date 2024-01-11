@@ -52,6 +52,33 @@ jewel.screens["game-screen"] = (function() {
         }
     }
 
+    function playBoardEvents(events) {
+        if (events.length > 0) {
+            var boardEvent = events.shift(),
+                next = function() {
+                    playBoardEvents(events);
+                };
+            switch (boardEvent.type) {
+                case "move" :
+                    display.moveJewels(boardEvent.data, next);
+                    break;
+                case "remove" :
+                    display.removeJewels(boardEvent.data, next);
+                    break;
+                case "refill" :
+                    display.refill(boardEvent.data, next);
+                    break;
+                default :
+                    next();
+                    break;
+            }
+        } else {
+            display.redraw(board.getBoard(), function() {
+                // good to go again
+            });
+        }
+    }
+
     return {
         run : run
     };
