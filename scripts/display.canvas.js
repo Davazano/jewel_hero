@@ -125,6 +125,28 @@ jewel.display = (function() {
         renderCursor();
     }
 
+    function moveJewels(movedJewels, callback) {
+        var n = movedJewels.length,
+            mover, i;
+        for (i=0;i<n;i++) {
+            mover = movedJewels[i];
+            clearJewel(mover.fromX, mover.fromY);
+        }
+        for (i=0;i<n;i++) {
+            mover = movedJewels[i];
+            drawJewel(mover.type, mover.toX, mover.toY);
+        }
+        callback();
+    }
+
+    function removeJewels(removedJewels, callback) {
+        var n = removedJewels.length;
+        for (var i=0;i<n;i++) {
+            clearJewel(removedJewels[i].x, removedJewels[i].y);
+        }
+        callback();
+    }
+
     function initialize(callback) {
         if (firstRun) {
             setup();
@@ -135,6 +157,10 @@ jewel.display = (function() {
 
     return {
         initialize : initialize,
-        redraw : redraw
+        redraw : redraw,
+        setCursor : setCursor,
+        moveJewels : moveJewels,
+        removeJewels : removeJewels,
+        refill : redraw
     }
 })();
