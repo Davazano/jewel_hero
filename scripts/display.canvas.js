@@ -69,6 +69,12 @@ jewel.display = (function() {
         callback();
     }
 
+    function clearJewel(x, y) {
+        ctx.clearRect(
+            x * jewelSize, y * jewelSize, jewelSize, jewelSize
+        );
+    }
+    
     function clearCursor() {
         if (cursor) {
             var x = cursor.x,
@@ -91,7 +97,7 @@ jewel.display = (function() {
         }
         renderCursor();
     }
-    
+
     function initialize(callback) {
         if (firstRun) {
             setup();
