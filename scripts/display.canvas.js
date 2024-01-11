@@ -5,7 +5,8 @@ jewel.display = (function() {
         cols, rows,
         jewelSize,
         jewels,
-        firstRun = true;
+        firstRun = true,
+        cursor;
 
         function createBackground() {
             var background = document.createElement("canvas"),
@@ -68,6 +69,29 @@ jewel.display = (function() {
         callback();
     }
 
+    function clearCursor() {
+        if (cursor) {
+            var x = cursor.x,
+                y = cursor.y;
+            clearJewel(x, y);
+            drawJewel(jewels[x][y], x, y);
+        }
+    }
+
+    function setCursor(x, y, selected) {
+        clearCursor();
+        if (arguments.length > 0) {
+            cursor = {
+                x : x,
+                y : y,
+                selected : selected
+            };
+        } else {
+            cursor = null;
+        }
+        renderCursor();
+    }
+    
     function initialize(callback) {
         if (firstRun) {
             setup();
