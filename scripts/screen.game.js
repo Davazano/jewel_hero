@@ -94,6 +94,22 @@ jewel.screens["game-screen"] = (function() {
         }
     }
 
+    function moveUp() {
+        moveCursor(0, -1);
+    }
+
+    function moveDown() {
+        moveCursor(0, 1);
+    }
+
+    function moveLeft() {
+        moveCursor(-1, 0);
+    }
+
+    function moveRight() {
+        moveCursor(1, 0);
+    }
+
     return {
         run : run
     };
