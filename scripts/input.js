@@ -20,6 +20,30 @@ jewel.input = (function() {
         90 : "KEY_Z"
     };
 
+    function handleClick(event, control, click) {
+        // is any action bound to this input control?
+        var action = settings.controls[control];
+        if (!action) {
+            return;
+        }
+        
+        var board = $("#game-screen .game-board")[0],
+            rect = board.getBoundingClientRect(),
+            relX, relY,
+            jewelX, jewelY;
+
+        // click position relative to board
+        relX = click.clientX - rect.left;
+        relY = click.clientY - rect.top;
+        // jewel coordinates
+        jewelX = Math.floor(relX / rect.width * settings.cols);
+        jewelY = Math.floor(relY / rect.height * settings.rows);
+        // trigger functions bound to action
+        trigger(action, jewelX, jewelY);
+        // prevent default click behavior
+        event.preventDefault();
+    }
+
     function initialize() {
         inputHandlers = {};
         var board = $("#game-screen .game-board")[0];
