@@ -18,6 +18,13 @@ jewel.screens["game-screen"] = (function() {
         });
     }
 
+    function setCursor(x, y, select) {
+        cursor.x = x;
+        cursor.y = y;
+        cursor.selected = select;
+        display.setCursor(x, y, select);
+    }
+
     return {
         run : run
     };
