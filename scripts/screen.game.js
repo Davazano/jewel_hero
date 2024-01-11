@@ -25,6 +25,33 @@ jewel.screens["game-screen"] = (function() {
         display.setCursor(x, y, select);
     }
 
+    function selectJewel(x, y) {
+        if (arguments.length == 0) {
+            selectJewel(cursor.x, cursor.y);
+            return;
+        }
+        if (cursor.selected) {
+            var dx = Math.abs(x - cursor.x),
+                dy = Math.abs(y - cursor.y),
+                dist = dx + dy;
+
+            if (dist == 0) {
+                // deselected the selected jewel
+                setCursor(x, y, false);
+            } else if (dist == 1) {
+                // selected an adjacent jewel
+                board.swap(cursor.x, cursor.y, 
+                    x, y, playBoardEvents);
+                setCursor(x, y, false);
+            } else {
+                // selected a different jewel
+                setCursor(x, y, true);
+            }
+        } else {
+            setCursor(x, y, true);
+        }
+    }
+
     return {
         run : run
     };
