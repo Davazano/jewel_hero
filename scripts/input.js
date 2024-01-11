@@ -1,4 +1,24 @@
 jewel.input = (function() {
+    var dom = jewel.dom,
+        $ = dom.$,
+        settings = jewel.settings,
+        inputHandlers;
+
+    var keys = {
+        37 : "KEY_LEFT",
+        38 : "KEY_UP",
+        39 : "KEY_RIGHT",
+        40 : "KEY_DOWN",
+        13 : "KEY_ENTER",
+        32 : "KEY_SPACE",
+        65 : "KEY_A",
+        66 : "KEY_B",
+        67 : "KEY_C",
+        // alpha keys 68 - 87
+        88 : "KEY_X",
+        89 : "KEY_Y",
+        90 : "KEY_Z"
+    };
 
     function initialize() {
         inputHandlers = {};
