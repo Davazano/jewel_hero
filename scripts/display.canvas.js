@@ -124,7 +124,9 @@ jewel.display = (function() {
     }
 
     function cycle() {
+        var time = Date.now();
         renderCursor(time);
+        renderAnimations(time, previousCycle);
         previousCycle = time;
         requestAnimationFrame(cycle);
     }
