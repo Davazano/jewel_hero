@@ -79,6 +79,7 @@ jewel.display = (function() {
     }
 
     function cycle() {
+        renderCursor(time);
         previousCycle = time;
         requestAnimationFrame(cycle);
     }
@@ -130,7 +131,7 @@ jewel.display = (function() {
         } else {
             cursor = null;
         }
-        renderCursor();
+        //renderCursor();
     }
 
     function moveJewels(movedJewels, callback) {
