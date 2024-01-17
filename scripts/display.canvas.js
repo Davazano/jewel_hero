@@ -42,6 +42,7 @@ jewel.display = (function() {
         dom.addClass(canvas, "board");
         canvas.width = cols * jewelSize;
         canvas.height = rows * jewelSize;
+        ctx.scale(jewelSize, jewelSize);
 
         boardElement.appendChild(canvas);
         boardElement.appendChild(createBackground());
@@ -50,10 +51,10 @@ jewel.display = (function() {
     function drawJewel(type, x, y) {
         var image = jewel.images["images/jewels" +
                         jewelSize + ".png"];
+        
         ctx.drawImage(image,
             type * jewelSize, 0, jewelSize, jewelSize,
-            x * jewelSize, y * jewelSize,
-            jewelSize, jewelSize
+            x, y, 1, 1
         );
     }
 
@@ -71,9 +72,7 @@ jewel.display = (function() {
     }
 
     function clearJewel(x, y) {
-        ctx.clearRect(
-            x * jewelSize, y * jewelSize, jewelSize, jewelSize
-        );
+        ctx.clearRect(x, y, 1, 1);
     }
 
     function clearCursor() {
