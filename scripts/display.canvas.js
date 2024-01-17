@@ -6,7 +6,8 @@ jewel.display = (function() {
         jewelSize,
         jewels,
         firstRun = true,
-        cursor;
+        cursor,
+        previousCycle;
 
         function createBackground() {
             var background = document.createElement("canvas"),
@@ -46,6 +47,14 @@ jewel.display = (function() {
 
         boardElement.appendChild(canvas);
         boardElement.appendChild(createBackground());
+
+        previousCycle = Date.now();
+        requestAnimationFrame(cycle);
+    }
+
+    function cycle() {
+        previousCycle = time;
+        requestAnimationFrame(cycle);
     }
 
     function drawJewel(type, x, y) {
