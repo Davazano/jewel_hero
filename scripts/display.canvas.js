@@ -7,7 +7,8 @@ jewel.display = (function() {
         jewels,
         firstRun = true,
         cursor,
-        previousCycle;
+        previousCycle,
+        animations = [];
 
         function createBackground() {
             var background = document.createElement("canvas"),
@@ -50,6 +51,16 @@ jewel.display = (function() {
 
         previousCycle = Date.now();
         requestAnimationFrame(cycle);
+    }
+
+    function addAnimation(runTime, fncs) {
+        var anim = {
+            runTime : runTime,
+            startTime : Date.now(),
+            pos : 0,
+            fncs : fncs
+        };
+        animations.push(anim);
     }
 
     function renderCursor(time) {
