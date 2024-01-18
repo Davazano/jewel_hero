@@ -42,6 +42,18 @@ jewel.screens["game-screen"] = (function() {
             = gameState.level;
     }
 
+    function addScore(points) {
+        var nextLevelAt = Math.pow(
+            settings.baseLevelScore,
+            Math.pow(settings.baseLevelExp, gameState.level-1)
+        );
+        gameState.score += points;
+        if (gameState.score >= nextLevelAt) {
+            advanceLevel();
+        }
+        updateGameInfo();
+    }
+
     function setLevelTimer(reset) {
         if (gameState.timer) {
             clearTimeout(gameState.timer);
