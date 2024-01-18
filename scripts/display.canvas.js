@@ -249,6 +249,34 @@ jewel.display = (function() {
         });
     }
 
+    function levelUp(callback) {
+        addAnimation(1000, {
+            before : function(pos) {
+                var j = Math.floor(pos * rows * 2),
+                    x, y;
+                for (y=0,x=j;y<rows;y++,x--) {
+                    if (x >= 0 && x < cols) { // boundary check
+                        clearJewel(x, y);
+                        drawJewel(jewels[x][y], x, y);
+                    }
+                }
+            },
+            render : function(pos) {
+                var j = Math.floor(pos * rows * 2),
+                    x, y;
+                ctx.save(); // remember to save state
+                ctx.globalCompositeOperation = "lighter";
+                for (y=0,x=j;y<rows;y++,x--) {
+                    if (x >= 0 && x < cols) { // boundary check
+                        drawJewel(jewels[x][y], x, y, 1.1);
+                    }
+                }
+                ctx.restore();
+            },
+            done : callback
+        });
+    }
+    
     function initialize(callback) {
         if (firstRun) {
             setup();
