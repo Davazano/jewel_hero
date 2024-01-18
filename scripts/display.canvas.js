@@ -214,10 +214,27 @@ jewel.display = (function() {
 
     function removeJewels(removedJewels, callback) {
         var n = removedJewels.length;
-        for (var i=0;i<n;i++) {
-            clearJewel(removedJewels[i].x, removedJewels[i].y);
-        }
-        callback();
+        removedJewels.forEach(function(e) {
+            addAnimation(400, {
+                before : function() {
+                    clearJewel(e.x, e.y);
+                },
+                render : function(pos) {
+                    ctx.save();
+                    ctx.globalAlpha = 1 - pos;
+                    drawJewel(
+                        e.type, e.x, e.y,
+                        1 - pos, pos * Math.PI * 2
+                    );
+                    ctx.restore();
+                },
+                done : function() {
+                    if (--n == 0) {
+                        callback();
+                    }
+                }
+            });
+        });
     }
 
     function initialize(callback) {
