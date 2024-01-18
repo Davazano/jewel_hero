@@ -24,7 +24,6 @@ jewel.screens["game-screen"] = (function() {
         };
         
         updateGameInfo();
-        setLevelTimer(true);
         
         board.initialize(function() {
             display.initialize(function() {
@@ -42,6 +41,17 @@ jewel.screens["game-screen"] = (function() {
             = gameState.level;
     }
 
+    function advanceLevel() {
+        gameState.level++;
+        announce("Level " + gameState.level);
+        updateGameInfo();
+        gameState.startTime = Date.now();
+        gameState.endTime = settings.baseLevelTimer *
+            Math.pow(gameState.level, -0.05 * gameState.level);
+        setLevelTimer(true);
+        display.levelUp();
+    }
+    
     function addScore(points) {
         var nextLevelAt = Math.pow(
             settings.baseLevelScore,
