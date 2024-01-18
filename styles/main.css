@@ -195,3 +195,30 @@ ul.menu li button:active {
     height : 1em;
     background-color : rgba(225,235,255,0.15);
 }
+
+/* Game screen - Game state */
+#game-screen .game-info {
+    width : 100%;
+    float : left;
+}
+
+#game-screen .game-info label {
+    display : inline-block;
+    height : 1.5em;
+    float : left;
+    font-size : 0.6em;
+    padding : 0.25em;
+}
+
+#game-screen .game-info .score {
+    float : right;
+}
+
+#game-screen .time {
+    height : 0.25em;
+    border-radius : 0.5em;
+}
+
+#game-screen .time .indicator {
+    width : 100%;
+}
