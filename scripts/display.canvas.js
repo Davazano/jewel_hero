@@ -183,16 +183,33 @@ jewel.display = (function() {
 
     function moveJewels(movedJewels, callback) {
         var n = movedJewels.length,
-            mover, i;
-        for (i=0;i<n;i++) {
-            mover = movedJewels[i];
-            clearJewel(mover.fromX, mover.fromY);
-        }
-        for (i=0;i<n;i++) {
-            mover = movedJewels[i];
-            drawJewel(mover.type, mover.toX, mover.toY);
-        }
-        callback();
+            oldCursor = cursor;
+        cursor = null;
+        movedJewels.forEach(function(e) {
+            var x = e.fromX, y = e.fromY,
+                dx = e.toX - e.fromX,
+                dy = e.toY - e.fromY,
+                dist = Math.abs(dx) + Math.abs(dy);
+            addAnimation(200 * dist, {
+                before : function(pos) {
+                    pos = Math.sin(pos * Math.PI / 2);
+                    clearJewel(x + dx * pos, y + dy * pos);
+                },
+                render : function(pos) {
+                    pos = Math.sin(pos * Math.PI / 2);
+                    drawJewel(
+                        e.type,
+                        x + dx * pos, y + dy * pos
+                    );
+                },
+                done : function() {
+                    if (--n == 0) {
+                        cursor = oldCursor;
+                        callback();
+                    }
+                }
+            });
+        });
     }
 
     function removeJewels(removedJewels, callback) {
