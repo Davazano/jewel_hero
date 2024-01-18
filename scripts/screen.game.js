@@ -1,8 +1,11 @@
 jewel.screens["game-screen"] = (function() {
-    var gameState,
+    var settings = jewel.settings,
+        gameState,
         board = jewel.board,
         display = jewel.display,
         input = jewel.input,
+        dom = jewel.dom,
+        $ = dom.$,
         cursor,
         firstRun = true;
 
@@ -29,6 +32,13 @@ jewel.screens["game-screen"] = (function() {
                 });
             });
         });
+    }
+
+    function updateGameInfo() {
+        $("#game-screen .score span")[0].innerHTML
+            = gameState.score;
+        $("#game-screen .level span")[0].innerHTML
+            = gameState.level;
     }
 
     function run() {
