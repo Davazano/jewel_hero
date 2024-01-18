@@ -131,14 +131,26 @@ jewel.display = (function() {
         requestAnimationFrame(cycle);
     }
 
-    function drawJewel(type, x, y) {
+    function drawJewel(type, x, y, scale, rot) {
         var image = jewel.images["images/jewels" +
                         jewelSize + ".png"];
-        
+        ctx.save();
+        if (typeof scale !== "undefined" && scale > 0) {
+            ctx.beginPath();
+            ctx.rect(x,y,1,1);
+            ctx.clip();
+            ctx.translate(x + 0.5, y + 0.5);
+            ctx.scale(scale, scale);
+            if (rot) {
+                ctx.rotate(rot);
+            }
+            ctx.translate(-x - 0.5, -y - 0.5);
+        }
         ctx.drawImage(image,
             type * jewelSize, 0, jewelSize, jewelSize,
             x, y, 1, 1
         );
+        ctx.restore();
     }
 
     function redraw(newJewels, callback) {
