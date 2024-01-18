@@ -249,3 +249,40 @@ ul.menu li button:active {
     filter: glow(color=#ffff00,strength=1),
             dropshadow(color=#000000,offX=3,offY=3);
 }
+
+/* Announcement animation */
+/* Keyframes for webkit */
+@-webkit-keyframes zoomfade {
+    0% {
+        opacity : 1;
+        -webkit-transform : scale(0.5);
+    }
+    25% { /* stay at full opacity for a bit */
+        opacity : 1;
+    }
+    100% { /* and then fade to 0 */
+        opacity : 0;
+        -webkit-transform : scale(1.5);
+    }
+}
+/* Keyframes for webkit */
+@-moz-keyframes zoomfade {
+    0% {
+        opacity : 1;
+        -moz-transform : scale(0.5);
+    }
+    25% { /* stay at full opacity for a bit */
+        opacity : 1;
+    }
+    100% { /* and then fade to 0 */
+        opacity : 0;
+        -moz-transform : scale(1.5);
+    }
+}
+/* zoom-fade animation class */
+.zoomfade {
+    -webkit-animation-name : zoomfade;
+    -webkit-animation-duration : 2s;
+    -moz-animation-name : zoomfade;
+    -moz-animation-duration : 2s;
+}
