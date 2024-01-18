@@ -276,7 +276,7 @@ jewel.display = (function() {
             done : callback
         });
     }
-    
+
     function initialize(callback) {
         if (firstRun) {
             setup();
@@ -291,6 +291,7 @@ jewel.display = (function() {
         setCursor : setCursor,
         moveJewels : moveJewels,
         removeJewels : removeJewels,
-        refill : redraw
+        refill : redraw,
+        levelUp : levelUp
     }
 })();
