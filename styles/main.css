@@ -286,3 +286,12 @@ ul.menu li button:active {
     -moz-animation-name : zoomfade;
     -moz-animation-duration : 2s;
 }
+
+/* Fallback for browsers without CSS animations */
+.no-cssanimations #game-screen .announcement {
+    display : none;
+}
+.no-cssanimations #game-screen .announcement.active {
+    opacity : 1;
+    display : block;
+}
