@@ -126,6 +126,10 @@ jewel.screens["game-screen"] = (function() {
                 case "refill" :
                     display.refill(boardEvent.data, next);
                     break;
+                case "score" :
+                    addScore(boardEvent.data);
+                    next();
+                    break;
                 default :
                     next();
                     break;
