@@ -34,6 +34,22 @@ jewel.screens["game-screen"] = (function() {
         });
     }
 
+    function announce(str) {
+        var element = $("#game-screen .announcement")[0];
+        element.innerHTML = str;
+        if (Modernizr.cssanimations) {
+            dom.removeClass(element, "zoomfade");
+            setTimeout(function() {
+                dom.addClass(element, "zoomfade");
+            }, 1);
+        } else {
+            dom.addClass(element, "active");
+            setTimeout(function() {
+                dom.removeClass(element, "active");
+            }, 1000);
+        }
+    }
+
     function updateGameInfo() {
         $("#game-screen .score span")[0].innerHTML
             = gameState.score;
@@ -51,7 +67,7 @@ jewel.screens["game-screen"] = (function() {
         setLevelTimer(true);
         display.levelUp();
     }
-    
+
     function addScore(points) {
         var nextLevelAt = Math.pow(
             settings.baseLevelScore,
