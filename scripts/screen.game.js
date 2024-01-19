@@ -117,6 +117,12 @@ jewel.screens["game-screen"] = (function() {
         }
     }
 
+    function gameOver() {
+        display.gameOver(function() {
+            announce("Game over");
+        });
+    }
+    
     function run() {
         if (firstRun) {
             setup();
