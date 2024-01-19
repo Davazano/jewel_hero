@@ -97,6 +97,34 @@ jewel.display = (function() {
         }
     }
 
+    function explodePieces(pieces, pos, delta) {
+        var piece, i;
+        for (i=0;i<pieces.length;i++) {
+            piece = pieces[i];
+
+            piece.vel.y += 50 * delta;
+            piece.pos.y += piece.vel.y * delta;
+            piece.pos.x += piece.vel.x * delta;
+
+            if (piece.pos.x < 0 || piece.pos.x > cols) {
+                piece.pos.x = Math.max(0, piece.pos.x);
+                piece.pos.x = Math.min(cols, piece.pos.x);
+                piece.vel.x *= -1;
+            }
+
+            ctx.save();
+            ctx.globalCompositeOperation = "lighter";
+            ctx.translate(piece.pos.x, piece.pos.y);
+            ctx.rotate(piece.rot * pos * Math.PI * 4);
+            ctx.translate(-piece.pos.x, -piece.pos.y);
+            drawJewel(piece.type,
+                piece.pos.x - 0.5,
+                piece.pos.y - 0.5
+            );
+            ctx.restore();
+        }
+    }
+    
     function explode(callback) {
         var pieces = [],
             piece,
@@ -129,7 +157,7 @@ jewel.display = (function() {
             done : callback
         });
     }
-    
+
     function gameOver(callback) {
         addAnimation(1000, {
             render : function(pos) {
