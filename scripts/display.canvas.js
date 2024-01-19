@@ -97,6 +97,22 @@ jewel.display = (function() {
         }
     }
 
+    function gameOver(callback) {
+        addAnimation(1000, {
+            render : function(pos) {
+                canvas.style.left =
+                    0.2 * pos * (Math.random() - 0.5) + "em";
+                canvas.style.top =
+                    0.2 * pos * (Math.random() - 0.5) + "em";
+            },
+            done : function() {
+                canvas.style.left = "0";
+                canvas.style.top = "0";
+                explode(callback);
+            }
+        });
+    }
+
     function renderCursor(time) {
         if (!cursor) {
             return;
@@ -292,6 +308,7 @@ jewel.display = (function() {
         moveJewels : moveJewels,
         removeJewels : removeJewels,
         refill : redraw,
-        levelUp : levelUp
+        levelUp : levelUp,
+        gameOver : gameOver
     }
 })();
