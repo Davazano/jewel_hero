@@ -173,6 +173,7 @@ jewel.screens["game-screen"] = (function() {
                     display.removeJewels(boardEvent.data, next);
                     break;
                 case "refill" :
+                    announce("No moves!");
                     display.refill(boardEvent.data, next);
                     break;
                 case "score" :
