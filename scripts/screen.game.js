@@ -50,6 +50,17 @@ jewel.screens["game-screen"] = (function() {
         }
     }
 
+    function advanceLevel() {
+        gameState.level++;
+        announce("Level " + gameState.level);
+        updateGameInfo();
+        gameState.startTime = Date.now();
+        gameState.endTime = settings.baseLevelTimer *
+            Math.pow(gameState.level, -0.05 * gameState.level);
+        setLevelTimer(true);
+        display.levelUp();
+    }
+
     function updateGameInfo() {
         $("#game-screen .score span")[0].innerHTML
             = gameState.score;
